@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <script src="script.js" defer></script>
+    <title>Registraion Form</title>
+  </head>
+  <body>
+    <form action="#" class="form">
+      <!-- Progress bar -->
+      <div class="progressbar">
+        
+        <div class="progress" id="progress"></i></div>
+        
+        <div
+          class="progress-step progress-step"
+          data-title="Assign"
+        ><i class="fas fa-hands-helping"></i></div>
+        <div class="progress-step" data-title="Verification"><i class="fas fa-user-check"></i></div>
+        <div class="progress-step" data-title="OnProgress"><i class="fas fa-toolbox"></i></div>
+        <div class="progress-step" data-title="Completed"><i class="fas fa-check-circle"></i></div>
+      </div>
+
+      <!-- Steps -->
+      <div class="form-step form-step-active">
+        
+        
+          <a href="#" class="btn btn-next width-50 ml-auto">Next</a>
+        
+      </div>
+    
+    </form>
+<script>
+const nextBtns = document.querySelectorAll(".btn-next");
+const progress = document.getElementById("progress");
+const formSteps = document.querySelector(".form-step");
+const progressSteps = document.querySelectorAll(".progress-step");
+
+let formStepsNum = -1;
+
+nextBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    formStepsNum++;
+    updateProgressbar();
+  });
+});
+function updateProgressbar() {
+  progressSteps.forEach((progressStep, idx) => {
+    if (idx < formStepsNum + 1) {
+      progressStep.classList.add("progress-step-active");
+    } else {
+      progressStep.classList.remove("progress-step-active");
+    }
+  });
+
+  const progressActive = document.querySelectorAll(".progress-step-active");
+
+  progress.style.width =
+    ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + "%";
+}
+</script>
+  </body>
+</html>
